@@ -11,6 +11,11 @@ import morgan from "morgan";
 import { swaggerSpec } from "./utils/swagger.js";
 import swaggerUi from 'swagger-ui-express'
 
+import cors from "cors";
+
+app.use(cors()); 
+
+
 dotenv.config();
 
 
