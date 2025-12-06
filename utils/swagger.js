@@ -10,9 +10,10 @@ const options = {
     },
     servers: [
       {
-        url: process.env.NODE_ENV === "production"
-          ? "https://finance-tracker-api-sadia.onrender.com"
-          : "http://localhost:4000",
+        url:
+          process.env.NODE_ENV === "production"
+            ? "https://finance-tracker-api-1n66.onrender.com/"
+            : "http://localhost:4000",
       },
     ],
     components: {
