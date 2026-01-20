@@ -55,18 +55,12 @@ export const login = async (req, res, next) => {
 
     const token = generateToken(user._id);
 
-    res.status(200).json({ message: "logged successfuly", token });
+    user.password = undefined;
+
+    res.status(200).json({ message: "logged successfuly", token, user });
   } catch (error) {
     next(error);
   }
-};
-
-// get profile
-export const profile = async (req, res) => {
-  res.json({
-    message: "hello",
-    user: req.user.name,
-  });
 };
 
 

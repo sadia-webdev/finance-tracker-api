@@ -11,13 +11,11 @@ export const registerUserSchema = z.object({
       "Email must be valid"
     ),
 
-  password: z
-    .string()
-    .min(6, "Password must be at least 6 characters")
-    .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/,
-      "Password must contain uppercase, lowercase, number, and special character"
-    ),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+  // .regex(
+  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/,
+  //   "Password must contain uppercase, lowercase, number, and special character"
+  // ),
 
   role: z.enum(["user", "admin"]).optional(),
 });

@@ -1,11 +1,10 @@
 import express from "express";
-import { login, profile, register } from "../controllers/authcontroller.js";
+import { login, register } from "../controllers/authcontroller.js";
 import { validate } from "../middlewares/validate.js";
 import { registerUserSchema } from "../validation/userSchema.js";
 import { protect } from "../middlewares/protect.js";
 
 const router = express.Router();
-
 
 /**
  * @swagger
@@ -39,7 +38,6 @@ const router = express.Router();
 // register route
 router.post("/register/", validate(registerUserSchema), register);
 
-
 /**
  * @swagger
  * /auth/login:
@@ -66,8 +64,6 @@ router.post("/register/", validate(registerUserSchema), register);
 // login route
 router.post("/login/", login);
 
-
-
 /**
  * @swagger
  * /auth/profile:
@@ -83,7 +79,11 @@ router.post("/login/", login);
  *         description: Unauthorized
  */
 
-// profile route
-router.get("/profile/", protect, profile);
+// Protected routes
+router.get("/me", protect, async (req, res) => {
+  console.log("req.user", req.user);
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
+  res.json(req.user);
+});
 
 export default router;

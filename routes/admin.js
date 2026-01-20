@@ -52,7 +52,7 @@ const router = express.Router();
  */
 
 // admin route
-router.get("/users", protect, authorize('admin'), async (req, res) => {
+router.get("/users", protect, authorize('user'), async (req, res) => {
   const users = await User.find();
 
   res.status(200).json(users);

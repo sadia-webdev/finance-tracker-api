@@ -22,7 +22,9 @@ export const createTransaction = async (req, res, next) => {
 // get my all transactions
 export const getAllMyTransactions = async (req, res, next) => {
   try {
-    const transactions = await Transaction.find({ createdBy: req.user._id });
+    const transactions = await Transaction.find({
+      createdBy: req.user._id,
+    });
     res.status(200).json(transactions);
   } catch (error) {
     next(error);

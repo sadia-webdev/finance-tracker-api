@@ -25,18 +25,18 @@ const transactionSchema = mongoose.Schema(
       enum: [
         "Food",
         "Transport",
-        "Salary",
         "Rent",
         "Shopping",
         "Health",
         "Job",
+        "Entertainment",
       ],
     },
 
     date: {
       type: Date,
       required: true,
-      default: Date.now
+      default: Date.now,
     },
 
     createdBy: {
@@ -45,7 +45,7 @@ const transactionSchema = mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Transaction", transactionSchema);
